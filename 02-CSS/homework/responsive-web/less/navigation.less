@@ -1,1 +1,34 @@
 // Código de Nav acá
+.navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+        font-size: 3em;
+        margin: 1em;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 1.8em;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    li + li {
+        margin-left: 2rem;
+    }
+    
+    li {
+        cursor: pointer;
+
+        &:hover{
+            color: #111416;
+        }
+    }
+}
+
