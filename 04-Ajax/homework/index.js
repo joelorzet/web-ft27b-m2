@@ -15,6 +15,23 @@ $('#boton').click(() => {
 	});
 });
 
+const reloadFriends = () => {
+	document.querySelector('#lista').innerHTML = '';
+
+	$.get(`http://localhost:5000/amigos/`, (data) => {
+		data.forEach((ele) => {
+			const $li = document.createElement('li');
+			console.table(ele);
+
+			const ul = document.querySelector('#lista');
+
+			$li.innerText = ele.name;
+
+			ul.appendChild($li);
+		});
+	});
+};
+
 $('#search').click(() => {
 	const idValue = Number(document.querySelector('#input').value);
 
@@ -28,18 +45,19 @@ $('#search').click(() => {
 });
 
 $('#delete').click(() => {
-	const idToDelete = Number(document.querySelector('#inputDelete'));
+	const idToDelete = Number(document.querySelector('#inputDelete').value);
 
 	$.ajax({
 		url: `http://localhost:5000/amigos/${idToDelete}`,
 		method: 'DELETE',
-		dataType: 'json',
 		success: (data) => {
 			const realizado = document.querySelector('#success');
-			console.log(data[idToDelete]);
+			console.log(data);
 			realizado.innerHTML = `<h3>Realizado con Éxito</h3> 
             
-                <p>Elementos borrados: ${data[idToDelete]}</p>`;
+                <p>Elementos borrados: ${data[idToDelete].name}</p>`;
+
+			reloadFriends();
 		},
 		error: (error) => {
 			alert(error);
