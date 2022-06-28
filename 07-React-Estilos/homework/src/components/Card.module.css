@@ -1,0 +1,40 @@
+.card {
+    
+    box-sizing: border-box;
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    font-weight: 500;
+    background-color: #47B5FF;
+}
+
+.button {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.cardButton {
+    border-style: none;
+    padding: 4px 8px;
+    background-color: rgb(207, 33, 33);
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 8px;
+}
+.cardParraf {
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+    line-height: 30px
+}
+
+.mainCardTemp {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0px;
+}
+

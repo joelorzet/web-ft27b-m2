@@ -9,12 +9,17 @@ const styles = {
 	gap: '20px',
 };
 
-export default function Cards(props) {
+export default function Cards({ cities }) {
 	// acá va tu código
 	// tip, podés usar un map
+
+	if (!cities) {
+		return <h1>No hay cities que mostrar</h1>;
+	}
+
 	return (
 		<div style={styles}>
-			{props.cities.map((e) => (
+			{cities?.map((e) => (
 				<Card
 					max={e.main.temp_max}
 					min={e.main.temp_min}
