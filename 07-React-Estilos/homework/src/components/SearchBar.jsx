@@ -16,9 +16,11 @@ const Button = styled.button`
 	color: white;
 	font-weight: bold;
 	font-size: 18px;
+	transition: all ease 0.2s;
 
 	&:hover {
 		background-color: #0eaa71;
+		box-shadow: 0px 10px 16px 0px rgba(0, 0, 0, 0.1);
 	}
 `;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Card.module.css';
 
-export default function Card({ max, min, img, name, onClose }) {
+export default function Card({ max, min, img, name, onClose, id }) {
 	// acá va tu código
 	return (
 		<div className={style.card}>
@@ -10,7 +10,7 @@ export default function Card({ max, min, img, name, onClose }) {
 					<span>X</span>
 				</button>
 			</div>
-			<h3>{name}</h3>
+			<h3 className={style.title}>{name}</h3>
 			<div className={style.mainCardTemp}>
 				<p class={style.cardParraf}>
 					<span>Min</span>
