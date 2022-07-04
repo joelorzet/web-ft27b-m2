@@ -14,11 +14,11 @@ const store = createStore(counter);
 
 // Aquí, envolvemos nuestro componente principal React dentro de las etiquetas del Provider,
 // que vienen del paquete react-redux.
-// Esto es necesario porque el store necesita saber hacia dónde está pasando su estado. 
+// Esto es necesario porque el store necesita saber hacia dónde está pasando su estado.
 // El componente Provider es donde "vive" el store.
 ReactDOM.render(
-  <Provider store={store}>
-    <Counter />
-  </Provider>,
-  document.getElementById('root')
+	<Provider store={store}>
+		<Counter />
+	</Provider>,
+	document.getElementById('root')
 );
