@@ -4,58 +4,51 @@ import './App.css';
 import Nav from '../components/Nav.jsx';
 import Cards from '../components/Cards.jsx';
 
-const apiKey = 'Aqui va la API key que creaste';
+export default function App() {
+	const [cities, setCities] = useState([]);
 
-function App() {
-  const [cities, setCities] = useState([]);
-  function onClose(id) {
-    setCities(oldCities => oldCities.filter(c => c.id !== id));
-  }
-  function onSearch(ciudad) {
-    //Llamado a la API del clima
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}`)
-      .then(r => r.json())
-      .then((recurso) => {
-        if(recurso.main !== undefined){
-          const ciudad = {
-            min: Math.round(recurso.main.temp_min),
-            max: Math.round(recurso.main.temp_max),
-            img: recurso.weather[0].icon,
-            id: recurso.id,
-            wind: recurso.wind.speed,
-            temp: recurso.main.temp,
-            name: recurso.name,
-            weather: recurso.weather[0].main,
-            clouds: recurso.clouds.all,
-            latitud: recurso.coord.lat,
-            longitud: recurso.coord.lon
-          };
-          setCities(oldCities => [...oldCities, ciudad]);
-        } else {
-          alert("Ciudad no encontrada");
-        }
-      });
-  }
-  function onFilter(ciudadId) {
-    let ciudad = cities.filter(c => c.id === parseInt(ciudadId));
-    if(ciudad.length > 0) {
-        return ciudad[0];
-    } else {
-        return null;
-    }
-  }
-  return (
-    <div className="App">
-      <Nav onSearch={onSearch}/>
-      <div>
-        <Cards
-          cities={cities}
-          onClose={onClose}
-        />
-      </div>
-      <hr />
-    </div>
-  );
+	function onClose(id) {
+		setCities((oldCities) => oldCities.filter((c) => c.id !== id));
+	}
+
+	function onSearch(ciudad) {
+		const apiKey = 'f6e0a7c8a3924c98cda90e74c172e3d3';
+
+		fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`)
+			.then((r) => r.json())
+			.then((recurso) => {
+				if (recurso.main !== undefined) {
+					const ciudad = {
+						min: Math.round(recurso.main.temp_min),
+						max: Math.round(recurso.main.temp_max),
+						img: recurso.weather[0].icon,
+						id: recurso.id,
+						wind: recurso.wind.speed,
+						temp: recurso.main.temp,
+						name: recurso.name,
+						weather: recurso.weather[0].main,
+						clouds: recurso.clouds.all,
+						latitud: recurso.coord.lat,
+						longitud: recurso.coord.lon,
+					};
+					const IdCities = cities.map((citi) => citi.id);
+
+					if (IdCities.includes(ciudad.id)) {
+						alert('La ciudad ya se encuentra agregada');
+					} else {
+						setCities((oldCities) => [...oldCities, ciudad]);
+					}
+				} else {
+					alert('Ciudad no encontrada');
+				}
+			});
+	}
+
+	return (
+		<div className='App'>
+			<Nav onSearch={onSearch} />
+
+			<Cards cities={cities} onClose={onClose} />
+		</div>
+	);
 }
-
-export default App;

@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
+import About from './components/About/About.jsx';
+import Cards from './components/Cards/Cards.jsx';
+import Ciudad from './components/Ciudad/Ciudad.jsx';
+import Nav from './components/Nav/Nav.jsx';
 import './App.css';
-import Nav from './components/Nav.jsx';
-import Cards from './components/Cards.jsx';
 
 export default function App() {
 	const [cities, setCities] = useState([]);
 
 	function onClose(id) {
-		setCities((oldCities) => oldCities.filter((c) => c.id != id));
+		setCities((oldCities) => oldCities.filter((c) => c.id !== id));
+	}
+
+	function onFilter(ciudadId) {
+		let ciudad = cities.filter((c) => c.id === parseInt(ciudadId));
+
+		if (ciudad.length > 0) {
+			return ciudad[0];
+		} else {
+			return null;
+		}
 	}
 
 	function onSearch(ciudad) {
@@ -45,9 +58,19 @@ export default function App() {
 
 	return (
 		<div className='App'>
-			<Nav onSearch={onSearch} />
-
-			<Cards cities={cities} onClose={onClose} />
+			<Route path='/' render={() => <Nav onSearch={onSearch} />} />
+			<Route
+				exact
+				path='/'
+				render={() => (
+					<div>
+						<Cards cities={cities} onClose={onClose} />
+					</div>
+				)}
+			/>
+			<Route exact path='/about' render={() => <About />} />
+			<Route path='/city/:cityId' render={({ match }) => <Ciudad city={onFilter(match.params.cityId)} />} />
+			<hr />
 		</div>
 	);
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card.jsx';
+import Card from '../Card/Card.jsx';
 import style from './Cards.module.css';
 
 export default function Cards({ cities, onClose }) {
@@ -14,7 +14,15 @@ export default function Cards({ cities, onClose }) {
 		<div className={style.container}>
 			<div className={style.cards}>
 				{cities.map((e) => (
-					<Card max={e.max} min={e.min} name={e.name} img={e.img} onClose={() => onClose(e.id)} key={e.id} />
+					<Card
+						max={e.max}
+						min={e.min}
+						name={e.name}
+						img={e.img}
+						onClose={() => onClose(e.id)}
+						key={e.id}
+						id={e.id}
+					/>
 				))}
 			</div>
 		</div>

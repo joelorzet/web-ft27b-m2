@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import style from './Card.module.css';
 
 export default function Card({ max, min, img, name, onClose, id }) {
@@ -10,7 +11,9 @@ export default function Card({ max, min, img, name, onClose, id }) {
 					<span>X</span>
 				</button>
 			</div>
-			<h3 className={style.title}>{name}</h3>
+			<NavLink to={`/city/${id}`}>
+				<h3 className={style.title}>{name}</h3>
+			</NavLink>
 			<div className={style.mainCardTemp}>
 				<p className={style.cardParraf}>
 					<span>Min</span>

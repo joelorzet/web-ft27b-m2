@@ -1,0 +1,33 @@
+.ciudad {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #75b3ee;
+    padding: 15px;
+    width: 300px;    
+    border-radius: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.title {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: rgb(44, 42, 42);
+    margin-bottom: 20px;
+    
+}
+.info {
+    width: 80%;
+}
+.infoBox {
+    display: flex;
+    justify-content: space-between;
+    
+}

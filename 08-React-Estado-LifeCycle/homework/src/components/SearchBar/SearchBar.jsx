@@ -6,6 +6,10 @@ const Input = styled.input`
 	border-radius: 8px;
 	padding: 10px 25px;
 	margin-right: 10px;
+	transition: all 0.15s;
+	&:hover {
+		border: solid 2px #a8a39a;
+	}
 `;
 
 const Button = styled.input`
@@ -46,6 +50,7 @@ export default function SearchBar({ onSearch }) {
 				onSubmit={(e) => {
 					e.preventDefault();
 					onSearch(data);
+					e.target[0].value = '';
 				}}
 			>
 				<Input type='text' placeholder='Ciudad...' onChange={handleInputChange} />

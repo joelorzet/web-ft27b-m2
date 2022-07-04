@@ -8,7 +8,11 @@
     background: rgb(48,157,194);
     background: linear-gradient(10deg, rgba(48,157,194,1) 0%, rgba(24,186,226,1) 42%, rgba(19,201,238,1) 100%);
     margin: 10px;
-    
+    transition: all 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.32);
 }
 
 .title {
@@ -27,7 +31,7 @@
 .cardButton {
     border-style: none;
     padding: 2px 8px;
-    background-color: rgb(207, 33, 33);
+    background-color: #cf2121;
     font-weight: bold;
     border-radius: 8px;
     margin: 8px;
@@ -55,3 +59,8 @@
     margin: 10px 0px;
 }
 
+.mainDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
